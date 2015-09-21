@@ -36,6 +36,8 @@ m = length(labels); % training set size
 mom = 0.5;
 momIncrease = 20;
 velocity = zeros(size(theta));
+history = 0.9;
+rms = zeros(size(theta));
 
 %%======================================================================
 %% SGD loop
@@ -67,7 +69,12 @@ for e = 1:epochs
         % sgd update rule
         
         %%% YOUR CODE HERE %%%
-        velocity = mom*velocity + alpha * grad;
+        grad_square = grad.*grad;
+        rms = history * rms + (1-history) * grad_square;
+        sqrt_rms = sqrt(rms);
+        velocity = alpha * grad;
+        velocity = velocity./sqrt_rms;
+        %velocity = mom*velocity + alpha * grad;
         theta = theta - velocity;
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);

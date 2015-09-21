@@ -27,7 +27,9 @@ labels = loadMNISTLabels('../common/train-labels-idx1-ubyte');
 labels(labels==0) = 10; % Remap 0 to 10
 
 % Remove old data file if any
-delete('data.csv')
+[result, log_file_name] = system(' git rev-parse --abbrev-ref HEAD')
+log_file_name = strcat(log_file_name, '.csv')
+delete(log_file_name)
 
 % Initialize Parameters
 theta = cnnInitParams(imageDim,filterDim,numFilters,poolDim,numClasses);
@@ -86,6 +88,7 @@ options.epochs = 1;
 options.minibatch = 10;
 options.alpha = 1e-1;
 options.momentum = .95;
+options.log_file_name = log_file_name;
 
 
 %%======================================================================

@@ -78,7 +78,7 @@ for e = 1:epochs
         theta = theta - velocity;
 
         % Log data to file
-        dlmwrite('data.csv', [it, cost], '-append')
+        dlmwrite(options.log_file_name, [it, cost], '-append')
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);
 

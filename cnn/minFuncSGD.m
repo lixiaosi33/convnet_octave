@@ -76,9 +76,17 @@ for e = 1:epochs
         velocity = velocity./sqrt_rms;
         %velocity = mom*velocity + alpha * grad;
         theta = theta - velocity;
+
+        % Log data to file
+        dlmwrite('data.csv', [it, cost], '-append')
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);
 
+        % Breaking condition when 125 iterations reached
+        if it == 125
+            exit
+        end
+        
         if cost < 0.4
             fprintf('Evaluating')
 

@@ -26,6 +26,9 @@ images = reshape(images,imageDim,imageDim,[]);
 labels = loadMNISTLabels('../common/train-labels-idx1-ubyte');
 labels(labels==0) = 10; % Remap 0 to 10
 
+% Remove old data file if any
+delete('data.csv')
+
 % Initialize Parameters
 theta = cnnInitParams(imageDim,filterDim,numFilters,poolDim,numClasses);
 
@@ -80,7 +83,7 @@ end;
 %  Implement minFuncSGD.m, then train the model.
 
 options.epochs = 1;
-options.minibatch = 50;
+options.minibatch = 10;
 options.alpha = 1e-1;
 options.momentum = .95;
 

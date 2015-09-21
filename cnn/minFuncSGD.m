@@ -69,6 +69,7 @@ for e = 1:epochs
         %%% YOUR CODE HERE %%%
         velocity = mom*velocity + alpha * grad;
         theta = theta - velocity;
+        dlmwrite(options.log_file_name, [it, cost], '-append')
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);
 

@@ -66,25 +66,14 @@ for e = 1:epochs
         % sgd update rule
         
         %%% YOUR CODE HERE %%%
-<<<<<<< HEAD
         look_ahead = theta+mom*velocity;
         [cost2 grad_ahead] = funObj(look_ahead,mb_data,mb_labels);
         velocity = mom*velocity - alpha*grad_ahead;
         theta =theta+velocity;
-=======
-        grad_square = grad.*grad;
-        rms = history * rms + (1-history) * grad_square;
-        sqrt_rms = sqrt(rms);
-        velocity = alpha * grad;
-        velocity = velocity./sqrt_rms;
-        %velocity = mom*velocity + alpha * grad;
-        theta = theta - velocity;
-
-        % Log data to file
-        dlmwrite(options.log_file_name, [it, cost], '-append')
->>>>>>> 3feefd4... add rms logging
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);
+
+        dlmwrite(options.log_file_name, [it, cost], '-append')
 
         if cost < 0.4
             fprintf('Evaluating')

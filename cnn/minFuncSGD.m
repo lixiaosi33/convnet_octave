@@ -59,7 +59,7 @@ for e = 1:epochs
         mb_labels = labels(rp(s:s+minibatch-1));
 
         % evaluate the objective function on the next minibatch
-        [cost grad] = funObj(theta,mb_data,mb_labels);
+        %[cost grad] = funObj(theta,mb_data,mb_labels);
         % Instructions: Add in the weighted velocity vector to the
         % gradient evaluated above scaled by the learning rate.
         % Then update the current weights theta according to the
@@ -67,7 +67,7 @@ for e = 1:epochs
         
         %%% YOUR CODE HERE %%%
         look_ahead = theta+mom*velocity;
-        [cost2 grad_ahead] = funObj(look_ahead,mb_data,mb_labels);
+        [cost grad_ahead] = funObj(look_ahead,mb_data,mb_labels);
         velocity = mom*velocity - alpha*grad_ahead;
         theta =theta+velocity;
         

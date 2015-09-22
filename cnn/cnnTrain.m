@@ -28,7 +28,8 @@ labels(labels==0) = 10; % Remap 0 to 10
 
 % Remove old data file if any
 [result, log_file_name] = system(' git rev-parse --abbrev-ref HEAD')
-log_file_name = strcat(log_file_name, '.csv')
+keyboard('>>')
+log_file_name = strcat(log_file_name(1:end-1), '.csv')
 delete(log_file_name)
 
 % Initialize Parameters

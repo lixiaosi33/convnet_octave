@@ -85,7 +85,7 @@ end;
 %  Implement minFuncSGD.m, then train the model.
 
 options.epochs = 1;
-options.minibatch = 10;
+options.minibatch = 200;
 options.alpha = 1e-1;
 options.momentum = .95;
 options.log_file_name = log_file_name;

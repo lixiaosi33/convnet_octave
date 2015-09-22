@@ -73,6 +73,11 @@ for e = 1:epochs
         
         fprintf('Epoch %d: Cost on iteration %d is %f\n',e,it,cost);
 
+        % Breaking condition when 125 iterations reached
+        if it == 125
+            exit
+        end
+
         if cost < 0.4
             fprintf('Evaluating')
 

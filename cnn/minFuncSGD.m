@@ -75,6 +75,11 @@ for e = 1:epochs
 
         dlmwrite(options.log_file_name, [it, cost], '-append')
 
+        % Breaking condition when 125 iterations reached
+        if it == 125
+            exit
+        end
+
         if cost < 0.4
             fprintf('Evaluating')
 
